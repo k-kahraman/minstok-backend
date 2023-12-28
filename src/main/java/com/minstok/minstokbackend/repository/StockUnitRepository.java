@@ -4,6 +4,6 @@ import com.minstok.minstokbackend.entity.StockUnit;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
-public interface StockUnitRepository extends JpaRepository<StockUnit, UUID> {
+public interface StockUnitRepository extends JpaRepository<StockUnit, Long> {
     // Custom query methods if needed
 }

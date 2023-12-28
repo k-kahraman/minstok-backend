@@ -23,7 +23,7 @@ public class ProductService implements IService<Product> {
     }
 
     @Override
-    public Optional<Product> findById(UUID id) {
+    public Optional<Product> findById(Long id) {
         return productRepository.findById(id);
     }
 
@@ -33,7 +33,7 @@ public class ProductService implements IService<Product> {
     }
 
     @Override
-    public Product update(UUID id, Product product) {
+    public Product update(Long id, Product product) {
         // Ensure the product exists, then update it
         return productRepository.findById(id)
                 .map(existingProduct -> {
@@ -41,7 +41,6 @@ public class ProductService implements IService<Product> {
                     existingProduct.setDescription(product.getDescription());
                     existingProduct.setQuantity(product.getQuantity());
                     existingProduct.setPrice(product.getPrice());
-                    existingProduct.setOwner(product.getOwner());
                     existingProduct.setStockUnit(product.getStockUnit());
                     return productRepository.save(existingProduct);
                 })
@@ -52,7 +51,7 @@ public class ProductService implements IService<Product> {
     }
 
     @Override
-    public void deleteById(UUID id) {
+    public void deleteById(Long id) {
         productRepository.deleteById(id);
     }
 }

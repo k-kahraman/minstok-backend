@@ -22,7 +22,7 @@ public class StockUnitService implements IService<StockUnit> {
     }
 
     @Override
-    public Optional<StockUnit> findById(UUID id) {
+    public Optional<StockUnit> findById(Long id) {
         return stockUnitRepository.findById(id);
     }
 
@@ -35,13 +35,14 @@ public class StockUnitService implements IService<StockUnit> {
     }
 
     @Override
-    public StockUnit update(UUID id, StockUnit stockUnit) {
+    public StockUnit update(Long id, StockUnit stockUnit) {
         // Ensure the stock unit exists, then update it
         return stockUnitRepository.findById(id)
                 .map(existingStockUnit -> {
                     existingStockUnit.setName(stockUnit.getName());
                     existingStockUnit.setQrCode(stockUnit.getQrCode());
                     existingStockUnit.setNote(stockUnit.getNote());
+                    existingStockUnit.setDepot(stockUnit.getDepot());
                     return stockUnitRepository.save(existingStockUnit);
                 })
                 .orElseGet(() -> {
@@ -51,12 +52,11 @@ public class StockUnitService implements IService<StockUnit> {
     }
 
     @Override
-    public void deleteById(UUID id) {
+    public void deleteById(Long id) {
         stockUnitRepository.deleteById(id);
     }
 
     private String generateQrCode(StockUnit stockUnit) {
-        // QR code generation logic
-        return "generatedQRCodeBasedOnSomeLogic";
+        return stockUnit.getName() + stockUnit.getDepot().getName();
     }
 }

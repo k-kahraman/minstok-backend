@@ -24,7 +24,7 @@ public abstract class BaseEntityController<T> implements IController<T> {
 
     @Override
     @GetMapping("/{id}")
-    public T getById(@PathVariable UUID id) {
+    public T getById(@PathVariable Long id) {
         return service.findById(id).orElse(null);
     }
 
@@ -36,13 +36,13 @@ public abstract class BaseEntityController<T> implements IController<T> {
 
     @Override
     @PutMapping("/{id}")
-    public T update(@PathVariable UUID id, @RequestBody T entity) {
+    public T update(@PathVariable Long id, @RequestBody T entity) {
         return service.update(id, entity);
     }
 
     @Override
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable UUID id) {
+    public void delete(@PathVariable Long id) {
         service.deleteById(id);
     }
 }

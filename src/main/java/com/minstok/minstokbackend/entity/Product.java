@@ -18,8 +18,4 @@ public class Product extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "stock_unit_id", referencedColumnName = "id")
     private StockUnit stockUnit;
-
-    @ManyToOne
-    @JoinColumn(name = "owner_id", referencedColumnName = "id")
-    private User owner;
 }

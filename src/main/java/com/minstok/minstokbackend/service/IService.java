@@ -9,8 +9,8 @@ import java.util.UUID;
 @Service
 public interface IService<T> {
     List<T> findAll();
-    Optional<T> findById(UUID id);
+    Optional<T> findById(Long id);
     T save(T entity);
-    T update(UUID id, T entity);
-    void deleteById(UUID id);
+    T update(Long id, T entity);
+    void deleteById(Long id);
 }

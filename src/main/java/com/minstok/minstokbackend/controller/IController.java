@@ -6,12 +6,12 @@ import java.util.UUID;
 public interface IController<T> {
     List<T> getAll();
 
-    T getById(UUID id);
+    T getById(Long id);
 
     T save(T entity);
 
-    T update(UUID id, T entity);
+    T update(Long id, T entity);
 
-    void delete(UUID id);
+    void delete(Long id);
 }
 
